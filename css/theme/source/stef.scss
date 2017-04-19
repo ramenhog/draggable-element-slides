@@ -66,10 +66,29 @@ section.has-dark-background {
         max-height: 500px;
       }
     }
+
+    .draggable-ui-images {
+      margin-top: 1em;
+      display: flex;
+      position: relative;
+
+      .draggable-ui-image {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        flex: 1;
+        max-width: 33%;
+        max-height: 245px;
+      }
+    }
   }
 
   li {
     margin: 0.5em 0;
+  }
+
+  strong {
+    color: $purple;
   }
 
   p,
@@ -78,6 +97,7 @@ section.has-dark-background {
   h2,
   h3,
   h4 {
+
     & > code {
       border: 1px solid $purple;
       color: $purple;
@@ -88,6 +108,7 @@ section.has-dark-background {
   }
 
   a {
+    border-bottom: 1px solid currentColor;
 
     &.social-links {
       padding: 0 0.5em;

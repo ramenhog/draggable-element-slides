@@ -301,8 +301,23 @@ body {
   .reveal section img.step-image {
     max-height: 500px; }
 
+.reveal section .draggable-ui-images {
+  margin-top: 1em;
+  display: flex;
+  position: relative; }
+  .reveal section .draggable-ui-images .draggable-ui-image {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    flex: 1;
+    max-width: 33%;
+    max-height: 245px; }
+
 .reveal li {
   margin: 0.5em 0; }
+
+.reveal strong {
+  color: #474ec8; }
 
 .reveal p > code,
 .reveal li > code,
@@ -316,8 +331,10 @@ body {
   line-height: 1em;
   font-size: 0.8em; }
 
-.reveal a.social-links {
-  padding: 0 0.5em; }
+.reveal a {
+  border-bottom: 1px solid currentColor; }
+  .reveal a.social-links {
+    padding: 0 0.5em; }
 
 .reveal pre {
   box-shadow: none; }
