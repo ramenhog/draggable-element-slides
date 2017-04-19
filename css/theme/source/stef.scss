@@ -17,6 +17,7 @@
 
 // Override theme settings (see ../template/settings.scss)
 $purple: #474ec8;
+$blue: #108cd0;
 
 $backgroundColor: lighten($purple, 42%);
 
@@ -30,12 +31,12 @@ $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: none;
 $headingFontWeight: 600;
-$linkColor: $purple;
+$linkColor: $blue;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
 $heading1Size: 2.2em;
-$heading2Size: 1.8em;
+$heading2Size: 1.5em;
 $heading3Size: 1.3em;
 $heading4Size: 1.0em;
 
@@ -60,6 +61,10 @@ section.has-dark-background {
       background: none;
       border: none;
       box-shadow: none;
+
+      &.step-image {
+        max-height: 500px;
+      }
     }
   }
 

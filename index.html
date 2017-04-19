@@ -43,7 +43,7 @@
         </section>
         
         <section id="steps">
-          <h2>Steps to creating a draggable element</h2>
+          <h2>The basic steps</h2>
           <ol>
             <li><a href="#/step-1">Get initial click position</a></li>
             <li><a href="#/step-2">Get distance from initial click to element's top left corner</a></li>
@@ -54,6 +54,10 @@
         </section>
 
         <section id="step-1">
+          <h2>1. Get initial click position</h2>
+          <img src="images/step_1.jpg" class="step-image" />
+        </section>
+        <section id="step-1-details">
           <h2>1. Get initial click position</h2>
           <ul>
             <li>Attach handler to mousedown event listener</li>
@@ -75,6 +79,10 @@ elm.addEventListener("mousedown", mouseDown);
 
         <section id="step-2">
           <h2>2. Get distance from initial click to element's top left corner</h2>
+          <img src="images/step_2.jpg" class="step-image" />
+        </section>
+        <section id="step-2-details">
+          <h2>Get distance from initial click to element's top left corner</h2>
           <ul>
             <li>
               Find element's top left position relative to viewport
@@ -97,6 +105,10 @@ var diffX = mouseX - elmX;
         </section>
 
         <section id="step-3">
+          <h2>3. As mouse moves, get new mouse position</h2>
+          <img src="images/step_3.jpg" class="step-image" />
+        </section>
+        <section id="step-3-details">
           <h2>3. As mouse moves, get new mouse position</h2>
           <ul>
             <li>
@@ -132,8 +144,12 @@ function mouseMouse(e) {
 
         <section id="step-4">
           <h2>4. Determine new top left coordinates for element</h2>
+          <img src="images/step_4.jpg" class="step-image" />
+        </section>
+        <section id="step-4-details">
+          <h2>4. Determine new top left coordinates for element</h2>
           <ul>
-            <li>Subtract difference calculations (Step 2) from new mouse coordinates (Step 3)</li>
+            <li>Subtract difference calculations (<a href="#/step-2">Step 2</a>) from new mouse coordinates (<a href="#/step-3">Step 3</a>)</li>
           </ul>
           <pre>
             <code class="javascript">
@@ -144,6 +160,10 @@ var newElmY = newMouseY - diffY,
         </section>
 
         <section id="step-5">
+          <h2>5. Move element to new calculated coordinates</h2>
+          <img src="images/step_5.jpg" class="step-image" />
+        </section>
+        <section id="step-5-details">
           <h2>5. Move element to new calculated coordinates</h2>
           <ul>
             <li>Set the element's <code>top</code> and <code>left</code> properties to new coordinates</li>
