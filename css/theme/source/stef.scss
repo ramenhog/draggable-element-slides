@@ -1,0 +1,106 @@
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$purple: #474ec8;
+
+$backgroundColor: lighten($purple, 42%);
+
+$mainColor: #222;
+$headingColor: darken($purple, 25%);
+
+$mainFontSize: 25px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: $purple;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.2em;
+$heading2Size: 1.8em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-dark-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal {
+  .progress {
+    height: 8px;
+  }
+
+  section {
+    img {
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  li {
+    margin: 0.5em 0;
+  }
+
+  p,
+  li,
+  h1,
+  h2,
+  h3,
+  h4 {
+    & > code {
+      border: 1px solid $purple;
+      color: $purple;
+      padding: 0.15em 0.5em;
+      line-height: 1em;
+      font-size: 0.8em;
+    }
+  }
+
+  a {
+
+    &.social-links {
+      padding: 0 0.5em;
+    }
+  }
+
+  pre {
+    box-shadow: none;
+
+    code {
+      line-height: 1.4;
+      border: none;
+      padding: 0.3em 2em;
+    }
+  }
+
+  .title-container {
+    margin: 0 auto;
+    max-width: 700px;
+  }
+}

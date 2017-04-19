@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Draggable Elements with Vanilla JS</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/stef.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/rainbow.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section id="title">
+          <div class="title-container">
+            <h1>Draggable Elements with Vanilla JS</h1>
+            <p><a class="social-links" href="http://ramenhog.com" target="_blank">Stef Liu</a> | <a class="social-links" href="https://twitter.com/ramenhog" target="_blank">@ramenhog</a></p>
+            <img src="images/codepen.gif" />
+          </div>
+        </section>
+        
+        <section id="draggable-ui">
+          <h2>Draggable UI's</h2>
+          <p>Something about how draggable UI's are awesome for the user</p>
+        </section>
+        
+        <section id="event-object">
+          <h2>Event object</h2>
+          <p>Event objects contain a plethora of awesome info, yo!</p>
+        </section>
+        
+        <section id="steps">
+          <h2>Steps to creating a draggable element</h2>
+          <ol>
+            <li><a href="#/step-1">Get initial click position</a></li>
+            <li><a href="#/step-2">Get distance from initial click to element's top left corner</a></li>
+            <li><a href="#/step-3">As mouse moves, get new mouse position</a></li>
+            <li><a href="#/step-4">Determine new top left coordinates for element</a></li>
+            <li><a href="#/step-5">Move element to new calculated coordinates</a></li>
+          </ol>
+        </section>
+
+        <section id="step-1">
+          <h2>1. Get initial click position</h2>
+          <ul>
+            <li>Attach handler to mousedown event listener</li>
+            <li>
+              Utilize <code>event</code> object to get initial position
+            </li>
+          </ul>
+          <pre>
+            <code class="javascript">
+function mouseDown(event) {
+  var mouseY = event.clientY;
+  var mouseX = event.clientX;
+}
+
+elm.addEventListener("mousedown", mouseDown);
+            </code>
+          </pre>
+        </section>
+
+        <section id="step-2">
+          <h2>2. Get distance from initial click to element's top left corner</h2>
+          <ul>
+            <li>
+              Find element's top left position relative to viewport
+            </li>
+            <li>
+              Subtract element's top left coordinates from initial click's coordinates
+            </li>
+          </ul>
+          <pre>
+            <code class="javascript">
+// get elm top and left coordinates
+var elmY = elm.offsetTop;
+var elmX = elm.offsetLeft;
+
+// get diff from element top left to mousedown point
+var diffY = mouseY - elmY;
+var diffX = mouseX - elmX;
+            </code>
+          </pre>
+        </section>
+
+        <section id="step-3">
+          <h2>3. As mouse moves, get new mouse position</h2>
+          <ul>
+            <li>
+              Attach handler to mousemove event listener
+              <ul>
+                <li>Handler should only be fired when mouse is <strong>clicked and moving</strong></li>
+              </ul>
+            </li>
+            <li>Use mousemove <code>event</code> object to calculate new mouse coordinates</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+var isMouseDown = false;
+
+function mouseDown(e) {
+  isMouseDown = true;
+}
+
+function mouseUp(e) {
+  isMouseDown = false;
+}
+
+function mouseMouse(e) {
+  if (!isMouseDown) return; // if mouse is not clicked, return and do nothing
+
+  // get new mouse coordinates
+  var newMouseY = e.clientY;
+  var newMouseX = e.clientX;
+}
+            </code>
+          </pre>
+        </section>
+
+        <section id="step-4">
+          <h2>4. Determine new top left coordinates for element</h2>
+          <ul>
+            <li>Subtract difference calculations (Step 2) from new mouse coordinates (Step 3)</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+var newElmY = newMouseY - diffY,
+    newElmX = newMouseX - diffX;
+            </code>
+          </pre>
+        </section>
+
+        <section id="step-5">
+          <h2>5. Move element to new calculated coordinates</h2>
+          <ul>
+            <li>Set the element's <code>top</code> and <code>left</code> properties to new coordinates</li>
+          </ul>
+          <pre>
+            <code class="javascript">
+elm.style.top = newElmY + 'px';
+elm.style.left = newElmX + 'px';
+            </code>
+          </pre>
+        </section>
+
+        <section id="step-6">
+          <h2>Let's see it in action.</h2>
+          <img src="images/end.gif" />
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
