@@ -334,7 +334,7 @@ body {
 .reveal a {
   border-bottom: 1px solid currentColor; }
   .reveal a.social-links {
-    padding: 0 0.5em; }
+    margin: 0 0.5em; }
 
 .reveal pre {
   box-shadow: none; }
