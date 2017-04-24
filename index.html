@@ -70,7 +70,7 @@
           <img src="images/step_1.jpg" class="step-image" alt="Get initial click position" />
         </section>
         <section id="step-1-details">
-          <h2>1. Get initial click position</h2>
+          <h2>1. Get initial click position (cont'd)</h2>
           <ul>
             <li>Attach handler to mousedown event listener</li>
             <li>
@@ -94,7 +94,7 @@ elm.addEventListener("mousedown", mouseDown);
           <img src="images/step_2.jpg" class="step-image" alt="Get distance from initial click to element's top left corner" />
         </section>
         <section id="step-2-details">
-          <h2>2. Get distance from initial click to element's top left corner</h2>
+          <h2>2. Get distance from initial click to <br/>element's top left corner (cont'd)</h2>
           <ul>
             <li>
               Find element's top left position relative to parent container
@@ -121,7 +121,7 @@ var diffX = mouseX - elmLeft;
           <img src="images/step_3.jpg" class="step-image" alt="As mouse moves, get new mouse position" />
         </section>
         <section id="step-3-details">
-          <h2>3. As mouse moves, get new mouse position</h2>
+          <h2>3. As mouse moves, get new mouse position (cont'd)</h2>
           <ul>
             <li>
               Attach handler to mousemove event listener
@@ -159,7 +159,7 @@ function mouseMouse(e) {
           <img src="images/step_4.jpg" class="step-image" alt="Determine new top left coordinates for element" />
         </section>
         <section id="step-4-details">
-          <h2>4. Determine new top left coordinates for element</h2>
+          <h2>4. Determine new top left coordinates for element (cont'd)</h2>
           <ul>
             <li>Subtract difference calculations (<a href="#/step-2">Step 2</a>) from new mouse coordinates (<a href="#/step-3">Step 3</a>)</li>
           </ul>
@@ -176,7 +176,7 @@ var newElmTop = newMouseY - diffY,
           <img src="images/step_5.jpg" class="step-image" alt="Move element to new calculated coordinates" />
         </section>
         <section id="step-5-details">
-          <h2>5. Move element to new calculated coordinates</h2>
+          <h2>5. Move element to new calculated coordinates (cont'd)</h2>
           <ul>
             <li>Set the element's <code>top</code> and <code>left</code> properties to new coordinates</li>
           </ul>
@@ -190,7 +190,7 @@ elm.style.left = newElmLeft + 'px';
 
         <section id="boundaries">
           <h2>Welp.</h2>
-          <img src="#" alt="Element can be dragged outside parent container" />
+          <img src="images/out_of_container.jpg" class="step-image" alt="Element can be dragged outside parent container" />
         </section>
 
         <section id="boundaries-steps">
