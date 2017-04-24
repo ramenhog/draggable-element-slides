@@ -76,15 +76,28 @@
             <li>
               Utilize <code>event</code> object to get initial position
             </li>
+            <li>
+              Set mousedown state
+            </li>
           </ul>
           <pre>
             <code class="javascript">
+var isMouseDown = false;
+
 function mouseDown(event) {
+  // set mousedown state
+  isMouseDown = true;
+
   var mouseY = event.clientY;
   var mouseX = event.clientX;
 }
 
+function mouseUp(e) {
+  isMouseDown = false;
+}
+
 elm.addEventListener("mousedown", mouseDown);
+elm.addEventListener("mouseup", mouseUp);
             </code>
           </pre>
         </section>
@@ -133,23 +146,16 @@ var diffX = mouseX - elmLeft;
           </ul>
           <pre>
             <code class="javascript">
-var isMouseDown = false;
-
-function mouseDown(e) {
-  isMouseDown = true;
-}
-
-function mouseUp(e) {
-  isMouseDown = false;
-}
-
-function mouseMouse(e) {
-  if (!isMouseDown) return; // if mouse is not clicked, return and do nothing
+function mouseMove(e) {
+  // if mouse is not clicked, return and do nothing
+  if (!isMouseDown) return;
 
   // get new mouse coordinates
   var newMouseY = e.clientY;
   var newMouseX = e.clientX;
 }
+
+elm.addEventListener("mousemove", mouseMove);
             </code>
           </pre>
         </section>
