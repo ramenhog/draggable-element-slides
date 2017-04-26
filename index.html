@@ -84,12 +84,12 @@
             <code class="javascript">
 var isMouseDown = false;
 
-function mouseDown(event) {
+function mouseDown(e) {
   // set mousedown state
   isMouseDown = true;
 
-  var mouseY = event.clientY;
-  var mouseX = event.clientX;
+  var mouseY = e.clientY;
+  var mouseX = e.clientX;
 }
 
 function mouseUp(e) {
@@ -97,7 +97,7 @@ function mouseUp(e) {
 }
 
 elm.addEventListener("mousedown", mouseDown);
-elm.addEventListener("mouseup", mouseUp);
+document.addEventListener("mouseup", mouseUp);
             </code>
           </pre>
         </section>
@@ -155,7 +155,7 @@ function mouseMove(e) {
   var newMouseX = e.clientX;
 }
 
-elm.addEventListener("mousemove", mouseMove);
+document.addEventListener("mousemove", mouseMove);
             </code>
           </pre>
         </section>
@@ -213,7 +213,7 @@ elm.style.left = newElmLeft + 'px';
           <h2>1. Get parent container dimensions</h2>
           <pre>
             <code class="javascript">
-const container = elm.offsetParent;
+var container = elm.offsetParent;
 containerWidth = container.offsetWidth;
 containerHeight = container.offsetHeight;
             </code>
@@ -251,7 +251,7 @@ if (newElmLeft < 0) {
           <h2>3. Get new <strong>bottom</strong> and <strong>right</strong> element coordinates</h2>
           <ul>
             <li>new bottom element coordinate = new top coordinate for element + element height</li>
-            <li>new right element coordinate = new left coordinate for element + element height</li>
+            <li>new right element coordinate = new left coordinate for element + element width</li>
           </ul>
           <pre>
             <code class="javascript">
