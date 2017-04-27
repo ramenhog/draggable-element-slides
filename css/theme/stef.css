@@ -343,6 +343,10 @@ body {
     border: none;
     padding: 0.3em 2em; }
 
+.reveal .codepen-container {
+  height: 471px;
+  width: 100%; }
+
 .reveal .title-container {
   margin: 0 auto;
   max-width: 700px; }

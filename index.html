@@ -27,7 +27,7 @@
         <section id="title">
           <div class="title-container">
             <h1>Draggable Elements with Vanilla JS</h1>
-            <p><a class="social-links" href="http://ramenhog.com" target="_blank">Stef Liu</a> | <a class="social-links" href="https://twitter.com/ramenhog" target="_blank">@ramenhog</a></p>
+            <p>Lunching 'n Learning with Stef Liu</p>
             <img src="images/codepen.gif" alt="draggable-buddy-guy" />
           </div>
         </section>
@@ -55,7 +55,7 @@
         </section>
         
         <section id="steps">
-          <h2>The basic steps</h2>
+          <h2>Section A: The basic steps</h2>
           <ol>
             <li><a href="#/step-1">Get initial click position</a></li>
             <li><a href="#/step-2">Get distance from initial click to element's top left corner</a></li>
@@ -195,17 +195,18 @@ elm.style.left = newElmLeft + 'px';
         </section>
 
         <section id="boundaries">
-          <h2>Welp.</h2>
+          <h2>Welp. How do we keep the element from being <br/>dragged outside the parent container?</h2>
           <img src="images/out_of_container.jpg" class="step-image" alt="Element can be dragged outside parent container" />
         </section>
 
         <section id="boundaries-steps">
-          <h2>How do we keep the element from being <br/>dragged outside the parent container?</h2>
+          <h2>Section B: Keep it in the container</h2>
           <ol>
             <li><a href="#/container-step-1">Get parent container dimensions</a></li>
-            <li><a href="#/container-step-2">Check if element is within top &amp; left container bounds</a></li>
-            <li><a href="#/container-step-3">Get new bottom and right element coordinates</a></li>
-            <li><a href="#/container-step-4">Check if element is within bottom &amp; right container bounds</a></li>
+            <li><a href="#/container-step-2">Get top &amp; left element limit</a></li>
+            <li><a href="#/container-step-3">Check if element is within top &amp; left container bounds</a></li>
+            <li><a href="#/container-step-4">Get new bottom and right element coordinates</a></li>
+            <li><a href="#/container-step-5">Check if element is within bottom &amp; right container bounds</a></li>
           </ol>
         </section>
 
@@ -221,16 +222,17 @@ containerHeight = container.offsetHeight;
         </section>
 
         <section id="container-step-2">
-          <h2>2. Check if element is within <strong>top &amp; left</strong> container bounds</h2>
+          <h2>2. Get <strong>top &amp; left</strong> element limit</h2>
           <ul>
-            <li>
-              Element is outside of the parent container if:
-              <ul>
-                <li>new top element coordinate is <strong>less than</strong> 0</li>
-                <li>new left element coordinate is <strong>less than</strong> 0</li>
-              </ul>
-            </li>
-            <li>Set coordinates to topmost and/or leftmost coordinates if outside of parent</li>
+            <li>Top left limit: (0,0)</li>
+          </ul>
+          <img src="images/top-left.jpg" class="step-image" alt="Top left bounds" />
+        </section>
+
+        <section id="container-step-3">
+          <h2>3. Check if element is within <strong>top &amp; left</strong> container bounds</h2>
+          <ul>
+            <li>If so, set coordinates to topmost and/or leftmost coordinates if outside of parent</li>
           </ul>
           <pre>
             <code class="javascript">
@@ -247,43 +249,30 @@ if (newElmLeft < 0) {
           </pre>
         </section>
 
-        <section id="container-step-3">
-          <h2>3. Get new <strong>bottom</strong> and <strong>right</strong> element coordinates</h2>
+        <section id="container-step-4">
+          <h2>4. Get the <strong>bottom</strong> and <strong>right</strong> element limit</h2>
           <ul>
-            <li>new bottom element coordinate = new top coordinate for element + element height</li>
-            <li>new right element coordinate = new left coordinate for element + element width</li>
+            <li>bottommost limit = container height - element height</li>
+            <li>rightmost limit = container width - element width</li>
           </ul>
-          <pre>
-            <code class="javascript">
-var newElmRight = newElmTop + elmHeight;
-
-var newElmBottom = newElmLeft + elmWidth;
-            </code>
-          </pre>
+          <img src="images/bottom-right.jpg" class="step-image" alt="Bottom right bounds" />
         </section>
 
-        <section id="container-step-4">
-          <h2>4. Check if element is within <br/><strong>bottom &amp; right</strong> container bounds</h2>
+        <section id="container-step-5">
+          <h2>5. Check if element is within <br/><strong>bottom &amp; right</strong> container bounds</h2>
           <ul>
-            <li>
-              Element is outside of the parent container if:
-              <ul>
-                <li>new bottom element coordinate is <strong>greater than</strong> element height</li>
-                <li>new right element coordinate is <strong>greater than</strong> element width</li>
-              </ul>
-            </li>
-            <li>Set coordinates to bottommost and/or rightmost coordinates if outside of parent</li>
+            <li>If so, set coordinates to bottommost and/or rightmost coordinates</li>
           </ul>
           <pre>
             <code class="javascript">
 // if elm is being dragged off bottom of the container...
-if (newElmBottom > containerHeight) {
-  newElmTop = containerHeight - elmHeight;
+if (newElmTop > bottomLimit) {
+  newElmTop = bottomLimit;
 }
 
 // if elm is being dragged off right of the container...
-if (newElmRight > containerWidth) {
-  newElmLeft = containerWidth - elmWidth;
+if (newElmLeft > rightLimit) {
+  newElmLeft = rightLimit;
 }
             </code>
           </pre>
@@ -292,7 +281,23 @@ if (newElmRight > containerWidth) {
         <section id="codepen-time">
           <h2>Let's see it in action.</h2>
           <p><a href="http://codepen.io/ramenhog/pen/37341d552dc3ae71dc4ba599bc26ead5/" target="_blank">CodePen time 🎉</a></p>
-          <img src="images/end.gif" alt="Party parrot" />
+          <img src="images/end.gif" alt="Yay" />
+        </section>
+
+        <section id="draggable-buddy">
+          <h2>The world is your oyster</h2>
+          <div class="codepen-container">
+            <p data-height="471" data-theme-id="28475" data-slug-hash="gmGzRQ" data-default-tab="result" data-user="ramenhog" data-embed-version="2" data-pen-title="Move Me: draggable element without jQuery UI" class="codepen">See the Pen <a href="http://codepen.io/ramenhog/pen/gmGzRQ/">Move Me: draggable element without jQuery UI</a> by Stephanie (<a href="http://codepen.io/ramenhog">@ramenhog</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+          </div>
+          <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+        </section>
+
+        <section id="contact">
+          <h2>Show me your stuff! <br/>Ask me your questions!</h2>
+          <img src="images/call-me.gif" alt="Contact me" />
+          <p>Tweet at me: <a href="http://twitter.com/ramenhog" target="_blank">@ramenhog</a></p>
+          <p>Email me: <a href="mailto:stephofliu@gmail.com">stephofliu@gmail.com</a></p>
+          <p>Check out <a href="http://ramenhog.com" target="_blank">my site</a> and <a href="http://codepen.io/ramenhog/" target="_blank">CodePens</a> for more tutorials &amp; random code fun.</p>
         </section>
       </div>
     </div>
