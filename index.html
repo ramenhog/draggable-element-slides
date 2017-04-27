@@ -214,9 +214,9 @@ elm.style.left = newElmLeft + 'px';
           <h2>1. Get parent container dimensions</h2>
           <pre>
             <code class="javascript">
-var container = elm.offsetParent;
-containerWidth = container.offsetWidth;
-containerHeight = container.offsetHeight;
+var container = document.getElementById('container');
+containerWidth = container.clientWidth;
+containerHeight = container.clientHeight;
             </code>
           </pre>
         </section>
