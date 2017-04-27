@@ -277,12 +277,12 @@ var newElmBottom = newElmLeft + elmWidth;
           <pre>
             <code class="javascript">
 // if elm is being dragged off bottom of the container...
-if (newElmRight > containerHeight) {
+if (newElmBottom > containerHeight) {
   newElmTop = containerHeight - elmHeight;
 }
 
 // if elm is being dragged off right of the container...
-if (newElmBottom > containerWidth) {
+if (newElmRight > containerWidth) {
   newElmLeft = containerWidth - elmWidth;
 }
             </code>
